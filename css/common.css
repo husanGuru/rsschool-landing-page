@@ -167,6 +167,18 @@ button {
   mask-image: url("../assets/icons/facebook.svg");
 }
 
+.icon--burger {
+  width: 17px;
+  height: 9px;
+  mask-image: url("../assets/icons/burger.svg");
+}
+
+.icon--close {
+  width: 13px;
+  height: 13px;
+  mask-image: url("../assets/icons/close.svg");
+}
+
 .icon--arrow-left {
   width: 24px;
   height: 24px;
@@ -209,6 +221,8 @@ button {
 
 /* header */
 .header {
+  position: relative;
+  z-index: 10;
   height: 60px;
 }
 
@@ -217,6 +231,12 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.logo,
+.header__actions {
+  position: relative;
+  z-index: 1;
 }
 
 .logo__img {
@@ -241,6 +261,11 @@ button {
   display: flex;
   justify-content: center;
   gap: 40px;
+}
+
+.nav__menu,
+.burger {
+  display: none;
 }
 
 .header__actions {
@@ -279,6 +304,102 @@ button {
 
 .dark-mode .theme-switch__btn--dark {
   background-image: url("../assets/icons/theme-dark-moon.svg");
+}
+
+.burger {
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--borderInverse);
+  border-radius: 50%;
+}
+
+.burger[aria-expanded="true"] .icon--burger,
+.burger .icon--close {
+  display: none;
+}
+
+.burger[aria-expanded="true"] .icon--close {
+  display: inline-block;
+}
+
+@media (max-width: 1024px) {
+  .header__menu {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .theme-switch__btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 100px var(--gutter) 60px;
+    overflow-y: auto;
+    background-color: var(--mainBg);
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .nav .link {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .nav__menu {
+    display: inline-flex;
+    gap: 16px;
+  }
+
+  .nav__menu .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-open {
+    overflow: hidden;
+  }
+
+  .menu-open .header__inner {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header__actions {
+    gap: 12px;
+  }
+
+  .nav {
+    justify-content: flex-start;
+    padding-top: 160px;
+  }
 }
 
 /* main */
