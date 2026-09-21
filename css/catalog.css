@@ -125,3 +125,20 @@
     max-width: 310px;
   }
 }
+
+/* show more button */
+.more {
+  display: none;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .grid:not(.is-expanded) .card--extra {
+    display: none;
+  }
+
+  .more {
+    display: flex;
+  }
+}

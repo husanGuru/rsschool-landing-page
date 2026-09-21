@@ -11,3 +11,10 @@ tabs.forEach((tab) => {
     });
   });
 });
+
+document.querySelectorAll('.more__btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    btn.closest('.menu__panel').querySelector('.grid').classList.add('is-expanded');
+    btn.parentElement.hidden = true;
+  });
+});

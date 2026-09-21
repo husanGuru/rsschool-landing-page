@@ -179,6 +179,12 @@ button {
   mask-image: url("../assets/icons/close.svg");
 }
 
+.icon--refresh {
+  width: 24px;
+  height: 24px;
+  mask-image: url("../assets/icons/refresh.svg");
+}
+
 .icon--arrow-left {
   width: 24px;
   height: 24px;
