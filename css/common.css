@@ -238,3 +238,33 @@ button {
 .dark-mode .theme-switch__btn--dark {
   background-image: url("../assets/icons/theme-dark-moon.svg");
 }
+
+/* main */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin-top: 20px;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 200px;
+  padding: 20px 78px;
+  border-radius: 100px;
+  background-color: var(--mainBg);
+  color: var(--textPrimary);
+  font-weight: 600;
+}
+
+.btn .icon {
+  display: none;
+}
+
+.btn:hover .icon {
+  display: inline-block;
+}
