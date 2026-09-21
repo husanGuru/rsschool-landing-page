@@ -37,6 +37,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 20px 0 40px;
@@ -292,6 +296,7 @@ button {
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  transition: opacity 0.25s;
   background-position: center;
   background-size: contain;
 }
@@ -312,6 +317,10 @@ button {
   background-image: url("../assets/icons/theme-dark-moon.svg");
 }
 
+.theme-switch__btn:hover {
+  opacity: 0.7;
+}
+
 .burger {
   align-items: center;
   justify-content: center;
@@ -319,6 +328,11 @@ button {
   height: 44px;
   border: 1px solid var(--borderInverse);
   border-radius: 50%;
+  transition: background-color 0.25s;
+}
+
+.burger:hover {
+  background-color: var(--borderPrimary);
 }
 
 .burger[aria-expanded="true"] .icon--burger,
@@ -422,12 +436,17 @@ main {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 200px;
-  padding: 20px 78px;
+  width: 200px;
+  padding: 20px 0;
   border-radius: 100px;
   background-color: var(--mainBg);
   color: var(--textPrimary);
   font-weight: 600;
+  transition: opacity 0.25s;
+}
+
+.btn:hover {
+  opacity: 0.85;
 }
 
 .btn .icon {
@@ -447,6 +466,11 @@ main {
   height: 60px;
   border: 1px solid var(--borderInverse);
   border-radius: 50%;
+  transition: background-color 0.25s;
+}
+
+.icon-btn:hover {
+  background-color: var(--borderPrimary);
 }
 
 /* footer */
@@ -485,6 +509,11 @@ main {
   height: 60px;
   border: 1px solid var(--borderPrimary);
   border-radius: 50%;
+  transition: background-color 0.25s;
+}
+
+.social:hover {
+  background-color: rgba(225, 212, 201, 0.15);
 }
 
 .contacts {

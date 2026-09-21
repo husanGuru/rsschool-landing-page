@@ -96,6 +96,11 @@
   height: 4px;
   border-radius: 100px;
   background-color: var(--borderPrimary);
+  transition: background-color 0.25s;
+}
+
+.slider__bar:hover {
+  background-color: var(--borderInverse);
 }
 
 .slider__bar--active {
@@ -181,8 +186,9 @@
 }
 
 .app__img {
-  flex-shrink: 0;
-  width: 630px;
+  flex: 0 1 630px;
+  min-width: 0;
+  height: auto;
 }
 
 .store-btn {
@@ -194,6 +200,11 @@
   border: 1px solid var(--borderInverse);
   border-radius: 100px;
   font-weight: 600;
+  transition: background-color 0.25s;
+}
+
+.store-btn:hover {
+  background-color: var(--borderPrimary);
 }
 
 .store-btn .icon {

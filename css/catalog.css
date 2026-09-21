@@ -28,6 +28,11 @@
   border: 1px solid var(--borderPrimary);
   border-radius: 100px;
   font-weight: 600;
+  transition: background-color 0.25s;
+}
+
+.tab:hover {
+  background-color: var(--borderPrimary);
 }
 
 .tab__icon {
@@ -79,6 +84,11 @@
   border: 1px solid var(--borderPrimary);
   border-radius: 40px;
   pointer-events: none;
+  transition: border-color 0.25s;
+}
+
+.card:hover::after {
+  border-color: var(--borderInverse);
 }
 
 .card__media {
