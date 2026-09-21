@@ -121,3 +121,120 @@ button {
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
+/* icons */
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.icon--coffee-cup {
+  mask-image: url("../assets/icons/coffee-cup.svg");
+}
+
+/* links */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  font-weight: 600;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s;
+}
+
+.link:hover::after,
+.link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* header */
+.header {
+  height: 60px;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo__img {
+  width: 100px;
+  height: 60px;
+}
+
+.logo__img--dark,
+.dark-mode .logo__img--light {
+  display: none;
+}
+
+.dark-mode .logo__img--dark {
+  display: block;
+}
+
+.nav {
+  flex: 1;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.theme-switch {
+  display: flex;
+  gap: 8px;
+  padding: 3px;
+  border: 1px solid var(--borderPrimary);
+  border-radius: 100px;
+}
+
+.theme-switch__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+}
+
+.theme-switch__btn--light {
+  background-image: url("../assets/icons/theme-light-sun.svg");
+}
+
+.theme-switch__btn--dark {
+  background-image: url("../assets/icons/theme-light-moon.svg");
+}
+
+.dark-mode .theme-switch__btn--light {
+  background-image: url("../assets/icons/theme-dark-sun.svg");
+}
+
+.dark-mode .theme-switch__btn--dark {
+  background-image: url("../assets/icons/theme-dark-moon.svg");
+}
