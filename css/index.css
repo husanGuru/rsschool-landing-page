@@ -158,3 +158,89 @@
     display: none;
   }
 }
+
+/* mobile app */
+.app__inner {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.app__offer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.app__buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.app__img {
+  flex-shrink: 0;
+  width: 630px;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+  padding: 11px 19px;
+  border: 1px solid var(--borderInverse);
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.store-btn .icon {
+  width: 36px;
+  height: 36px;
+}
+
+.store-btn__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.store-btn__caption {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.icon--app-store {
+  mask-image: url("../assets/icons/app-store.svg");
+}
+
+.icon--google-play {
+  mask-image: url("../assets/icons/google-play.svg");
+  transform: scaleY(-1);
+}
+
+@media (max-width: 1024px) {
+  .app__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .app__img {
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .app__inner {
+    gap: 40px;
+  }
+
+  .app__buttons {
+    flex-direction: column;
+  }
+
+  .app__img {
+    width: 100%;
+  }
+}
