@@ -137,6 +137,18 @@ button {
   mask-image: url("../assets/icons/coffee-cup.svg");
 }
 
+.icon--arrow-left {
+  width: 24px;
+  height: 24px;
+  mask-image: url("../assets/icons/arrow-left.svg");
+}
+
+.icon--arrow-right {
+  width: 24px;
+  height: 24px;
+  mask-image: url("../assets/icons/arrow-right.svg");
+}
+
 /* links */
 .link {
   position: relative;
@@ -267,4 +279,15 @@ main {
 
 .btn:hover .icon {
   display: inline-block;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--borderInverse);
+  border-radius: 50%;
 }
