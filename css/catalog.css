@@ -1,0 +1,154 @@
+/* menu */
+.menu__offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.menu__title {
+  max-width: 800px;
+  text-align: center;
+}
+
+/* tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px 7px 7px;
+  border: 1px solid var(--borderPrimary);
+  border-radius: 100px;
+  font-weight: 600;
+  transition: background-color 0.25s;
+}
+
+.tab:hover {
+  background-color: var(--borderPrimary);
+}
+
+.tab__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--borderPrimary);
+  color: #403f3d;
+}
+
+.tab[aria-pressed="true"] {
+  border-color: var(--containerBg);
+  background-color: var(--containerBg);
+  color: var(--textInverse);
+}
+
+.tab[aria-pressed="true"] .tab__icon {
+  background-color: var(--textInverse);
+}
+
+/* product cards */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 310px;
+  height: 506px;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid var(--borderPrimary);
+  border-radius: 40px;
+  pointer-events: none;
+  transition: border-color 0.25s;
+}
+
+.card:hover::after {
+  border-color: var(--borderInverse);
+}
+
+.card__media {
+  position: relative;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.card__media img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  max-width: none;
+  height: 340px;
+  transform: translate(-50%, -50%);
+}
+
+.card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card__price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media (min-width: 1300px) {
+  .card {
+    width: calc((100% - 120px) / 4);
+    max-width: 310px;
+  }
+}
+
+/* show more button */
+.more {
+  display: none;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .grid:not(.is-expanded) .card--extra {
+    display: none;
+  }
+
+  .more {
+    display: flex;
+  }
+}
