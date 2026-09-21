@@ -107,3 +107,54 @@
     display: none;
   }
 }
+
+/* about */
+.about__title {
+  margin-bottom: 40px;
+}
+
+.about__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.about__column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about__figure {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.about__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__figure--tall {
+  aspect-ratio: 660 / 590;
+}
+
+.about__figure--short {
+  aspect-ratio: 660 / 430;
+}
+
+@media (max-width: 1024px) {
+  .about__images {
+    grid-template-columns: 1fr;
+  }
+
+  .about__figure {
+    height: 590px;
+    aspect-ratio: auto;
+  }
+
+  .about__figure--desktop {
+    display: none;
+  }
+}
