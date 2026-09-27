@@ -335,22 +335,62 @@ button {
   background-color: var(--borderPrimary);
 }
 
-.burger[aria-expanded="true"] .icon--burger,
+.burger .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
 .burger .icon--close {
-  display: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.burger[aria-expanded="true"] .icon--burger {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .burger[aria-expanded="true"] .icon--close {
-  display: inline-block;
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
-@media (max-width: 1024px) {
+/* header nav is tight in this range, so it gets smaller gaps and font
+   instead of jumping straight to the burger like on narrower screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header__inner {
+    gap: 12px;
+  }
+
+  .logo__img {
+    width: 80px;
+    height: 48px;
+  }
+
+  .nav__list {
+    gap: 14px;
+  }
+
+  .nav .link {
+    font-size: 14px;
+  }
+
+  .header__actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
   .header__menu {
     display: none;
   }
 
   .burger {
     display: flex;
+    position: relative;
   }
 
   .theme-switch__btn {
@@ -364,7 +404,7 @@ button {
     right: 0;
     bottom: 0;
     left: 0;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -372,10 +412,16 @@ button {
     padding: 100px var(--gutter) 60px;
     overflow-y: auto;
     background-color: var(--mainBg);
+    opacity: 0;
+    transform: translateY(-16px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .nav.is-open {
-    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .nav__list {

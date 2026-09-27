@@ -47,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  window.matchMedia('(min-width: 1025px)').addEventListener('change', () => {
-    toggleMenu(false);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      toggleMenu(false);
+    }
   });
 });
