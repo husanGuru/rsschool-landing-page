@@ -318,13 +318,8 @@
 }
 
 @media (max-width: 767px) {
-  .modal__box {
-    flex-direction: column;
-    padding: 16px;
-  }
-
   .modal__media {
-    width: 100%;
+    display: none;
   }
 
   .modal__content {

@@ -31,7 +31,7 @@ function renderPanel(panel) {
     more.className = 'more';
     more.innerHTML = `
       <button class="icon-btn more__btn" type="button" aria-label="Show more ${panel.dataset.panel} items">
-        <span class="icon icon--refresh"></span>
+        <span class="icon icon--refresh" aria-hidden="true"></span>
       </button>
     `;
     panel.append(more);
