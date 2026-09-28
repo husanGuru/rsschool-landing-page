@@ -55,3 +55,112 @@ tabs.forEach((tab) => {
     });
   });
 });
+
+const modal = document.querySelector('.modal');
+const modalImg = modal.querySelector('.modal__img');
+const modalTitle = modal.querySelector('#modal-title');
+const modalDescription = modal.querySelector('.modal__description');
+const modalPrice = modal.querySelector('.modal__price');
+const sizeOptions = modal.querySelector('[data-size-options]');
+const additiveOptions = modal.querySelector('[data-additive-options]');
+
+let currentProduct = null;
+let selectedSize = 's';
+let selectedAdditives = new Set();
+
+function renderSizeOptions() {
+  sizeOptions.innerHTML = Object.keys(currentProduct.sizes).map((key) => {
+    const size = currentProduct.sizes[key];
+    return `
+      <button class="option" type="button" data-size="${key}" aria-pressed="${key === selectedSize}">
+        <span class="option__badge">${key.toUpperCase()}</span>
+        ${size.size}
+      </button>
+    `;
+  }).join('');
+}
+
+function renderAdditiveOptions() {
+  additiveOptions.innerHTML = currentProduct.additives.map((additive, index) => `
+    <button class="option" type="button" data-additive="${additive.name}" aria-pressed="${selectedAdditives.has(additive.name)}">
+      <span class="option__badge">${index + 1}</span>
+      ${additive.name}
+    </button>
+  `).join('');
+}
+
+function updateTotal() {
+  let total = parseFloat(currentProduct.price) + parseFloat(currentProduct.sizes[selectedSize]['add-price']);
+
+  currentProduct.additives.forEach((additive) => {
+    if (selectedAdditives.has(additive.name)) {
+      total += parseFloat(additive['add-price']);
+    }
+  });
+
+  modalPrice.textContent = `$${total.toFixed(2)}`;
+}
+
+function openModal(product) {
+  currentProduct = product;
+  selectedSize = 's';
+  selectedAdditives = new Set();
+
+  modalImg.src = product.image;
+  modalImg.alt = product.name;
+  modalTitle.textContent = product.name;
+  modalDescription.textContent = product.description;
+
+  renderSizeOptions();
+  renderAdditiveOptions();
+  updateTotal();
+
+  modal.hidden = false;
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.hidden = true;
+  document.documentElement.style.overflow = '';
+}
+
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.card');
+  if (!card) return;
+
+  const product = products.find((item) => item.id === card.dataset.id);
+  openModal(product);
+});
+
+modal.addEventListener('click', (e) => {
+  const sizeBtn = e.target.closest('[data-size]');
+  if (sizeBtn) {
+    selectedSize = sizeBtn.dataset.size;
+    renderSizeOptions();
+    updateTotal();
+    return;
+  }
+
+  const additiveBtn = e.target.closest('[data-additive]');
+  if (additiveBtn) {
+    const name = additiveBtn.dataset.additive;
+    if (selectedAdditives.has(name)) {
+      selectedAdditives.delete(name);
+    } else {
+      selectedAdditives.add(name);
+    }
+    renderAdditiveOptions();
+    updateTotal();
+    return;
+  }
+
+  if (e.target === modal || e.target.closest('[data-close]')) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !modal.hidden) {
+    closeModal();
+  }
+});
